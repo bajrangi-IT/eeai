@@ -19,8 +19,8 @@ class GeminiService {
    * @returns {Promise<string>} - The AI generated text.
    */
   async generateResponse(prompt, history = []) {
-    if (!this.apiKey || this.apiKey === 'MOCK_KEY') {
-      return `[MOCK MODE] Prompt: ${prompt}`;
+    if (!this.apiKey || this.apiKey === 'MOCK_KEY' || this.apiKey.includes('your_')) {
+      return `**EleEdu AI Assistant (Preview Mode)**\n\n*   I am currently running in **Preview Mode**. To enable full AI capabilities, please configure the **GEMINI_API_KEY** in your deployment dashboard.\n*   You can ask me about **Voter Registration**, **Election Dates**, or **Polling Booths**.\n*   I am designed to provide **neutral** and **accurate** guidance for all citizens.`;
     }
 
     let lastError = null;
