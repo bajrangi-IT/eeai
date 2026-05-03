@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { CheckCircle, XCircle, ChevronRight, Info } from 'lucide-react';
 import axios from 'axios';
-import { GlassCard, Button } from '../components/Common';
+import { GlassCard, Button } from '../components/common';
 
 /**
  * Voter Eligibility Checker Page.
