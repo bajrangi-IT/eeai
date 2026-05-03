@@ -47,14 +47,9 @@ const limiter = rateLimit({
 });
 app.use('/api/', limiter);
 
-// Routes
-const apiRoutes = require('./routes/api');
-app.use('/api', apiRoutes);
-
-// Basic Route
-app.get('/', (req, res) => {
-  res.json({ message: 'Election Assistant API is running' });
-});
+// Routes Orchestration
+const rootRouter = require('./routes');
+app.use('/api', rootRouter);
 
 // Start Server
 if (require.main === module) {

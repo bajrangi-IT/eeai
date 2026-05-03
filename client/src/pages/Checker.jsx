@@ -2,7 +2,12 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { CheckCircle, XCircle, ChevronRight, Info } from 'lucide-react';
 import axios from 'axios';
+import { GlassCard, Button } from '../components/Common';
 
+/**
+ * Voter Eligibility Checker Page.
+ * Uses modular components for consistent structure and maintainability.
+ */
 const Checker = () => {
   const [formData, setFormData] = useState({
     age: '',
@@ -45,14 +50,16 @@ const Checker = () => {
 
   return (
     <div className="checker-container animate-fade-in">
-      <div className="checker-card glass-morphism" role="main">
+      <GlassCard className="checker-card" role="main">
         <h2>Voter Eligibility Checker</h2>
         <p className="subtitle" id="checker-desc">Answer a few questions to see if you can vote in the next election.</p>
 
         <form onSubmit={handleSubmit}>
+          
           <div className="form-group">
-            <label>How old are you?</label>
+            <label htmlFor="age">How old are you?</label>
             <input 
+              id="age"
               type="number" 
               required 
               min="0"
@@ -70,18 +77,21 @@ const Checker = () => {
                 type="button" 
                 className={formData.isCitizen ? 'active' : ''}
                 onClick={() => setFormData({...formData, isCitizen: true})}
+                aria-pressed={formData.isCitizen}
               >Yes</button>
               <button 
                 type="button" 
                 className={!formData.isCitizen ? 'active' : ''}
                 onClick={() => setFormData({...formData, isCitizen: false})}
+                aria-pressed={!formData.isCitizen}
               >No</button>
             </div>
           </div>
 
           <div className="form-group">
-            <label>How many months have you lived in your current constituency?</label>
+            <label htmlFor="residency">How many months have you lived in your current constituency?</label>
             <input 
+              id="residency"
               type="number" 
               required 
               min="0"
@@ -91,9 +101,9 @@ const Checker = () => {
             />
           </div>
 
-          <button type="submit" className="btn-primary full-width" disabled={loading}>
+          <Button type="submit" className="full-width" disabled={loading} ariaLabel="Check My Voter Eligibility Status">
             {loading ? 'Processing...' : 'Check My Status'}
-          </button>
+          </Button>
         </form>
 
         {result && (

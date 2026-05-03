@@ -1,5 +1,6 @@
 const axios = require('axios');
-const logger = require('./logger');
+const { logger } = require('./index');
+const CONFIG = require('../config/constants');
 
 /**
  * Service to handle all interactions with Google Gemini AI.
@@ -9,7 +10,7 @@ class GeminiService {
   constructor() {
     this.apiKey = process.env.GEMINI_API_KEY;
     this.baseUrl = 'https://generativelanguage.googleapis.com/v1';
-    this.models = ["gemini-2.0-flash", "gemini-2.5-flash", "gemini-1.5-flash"];
+    this.models = [CONFIG.MODELS.PRIMARY, CONFIG.MODELS.SECONDARY, CONFIG.MODELS.FALLBACK];
   }
 
   /**

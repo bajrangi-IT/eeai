@@ -1,12 +1,12 @@
-const geminiService = require('../services/geminiService');
-const analyticsService = require('../services/analyticsService');
+const { geminiService, analyticsService, logger } = require('../services');
 const { checkEligibility } = require('../utils/eligibility');
 const { translateText } = require('../services/googleServices');
+const CONFIG = require('../config/constants');
 const NodeCache = require('node-cache');
 require('dotenv').config();
 
-// Initialize Caching (TTL 1 hour) for optimized performance and reduced API costs
-const chatCache = new NodeCache({ stdTTL: 3600 });
+// Initialize Caching with TTL from central config
+const chatCache = new NodeCache({ stdTTL: CONFIG.CACHE_TTL });
 
 /**
  * Validates voter eligibility based on user-provided demographic data.

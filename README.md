@@ -65,6 +65,12 @@ The application follows a modular client-server architecture:
 - **/server**: A secure Express API with integrated caching and Google Cloud services.
 - **Middleware**: Custom logging, security headers, and rate limiting.
 
+## 🎯 Challenge Alignment & Persona
+- **Chosen Vertical**: Voter Education & Awareness
+- **Persona Implementation**: The application acts as a high-fidelity, empathetic election tutor. 
+- **Logical Decision Making**: Uses multi-model fallback logic (Gemini 2.0/2.5) to ensure consistent education delivery even during outages.
+- **Google Services**: Meaningful integration of Gemini AI for conversational learning and Google Maps for physical booth location.
+
 ## 🔒 Security Measures
 - **Rate Limiting**: Protection against brute-force and DoS attacks.
 - **Input Sanitization**: Strict validation of user queries and eligibility data.
