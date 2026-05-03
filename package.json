@@ -12,6 +12,7 @@
     "client": "cd client && npm run dev",
     "test:coverage": "jest --coverage",
     "vercel-build": "cd client && npm install && npm run build",
+    "build": "npm run vercel-build",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "keywords": [],
